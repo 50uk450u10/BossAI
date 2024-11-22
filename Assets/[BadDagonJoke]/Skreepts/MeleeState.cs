@@ -4,18 +4,8 @@ using UnityEngine;
 
 namespace Dagonite
 {
-    public class MeleeState : MonoBehaviour
+    public class MeleeState : BaseState
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        
     }
 }

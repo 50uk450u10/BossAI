@@ -4,18 +4,8 @@ using UnityEngine;
 
 namespace Dagonite
 {
-    public class ShootState : MonoBehaviour
+    public class ShootState : BaseState
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        
     }
 }

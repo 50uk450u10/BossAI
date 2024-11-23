@@ -6,6 +6,8 @@ namespace Dagonite
 {
     public class MeleeState : BaseState
     {
-        
+        public MeleeState(StateMachine m) : base(m)
+        {
+        }
     }
 }

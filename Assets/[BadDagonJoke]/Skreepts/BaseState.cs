@@ -4,8 +4,13 @@ using UnityEngine;
 
 namespace Dagonite
 {
-    public class BaseState : MonoBehaviour
+    public class BaseState
     {
+        public StateMachine machine;
+        public float elapsed;
+
+        public BaseState(StateMachine m) { machine = m; }
+
         virtual public void EnterState()
         {
 

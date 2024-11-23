@@ -1,20 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Dagonite
 {
-    public class StateMachine : MonoBehaviour
+    public class StateMachine
     {
+        public StateMachine(Mroom m)
+        {
+            Mroom = m;
+        }
+
         UnityEvent ChangeStates;
         BaseState currState;
+        public Mroom Mroom;
 
-        void ChangeState(BaseState newState)
+        public void ChangeState(BaseState newState)
         {
+            if (currState != null)
+            {
+                currState.ExitState();
+            }
             currState = newState;
+            currState.EnterState();
+        }
+
+        public void UpdateState()
+        {
+            if (currState != null)
+            {
+                currState.UpdateState();
+            }
         }
     }
 }

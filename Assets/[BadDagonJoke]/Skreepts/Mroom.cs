@@ -7,6 +7,8 @@ namespace Dagonite
     public class Mroom : MonoBehaviour
     {
         [SerializeField] GameObject player;
+        public GameObject[] tpPosition;
+        public Transform target;
         Rigidbody rb;
         bool invisible;
         int maxHealth = 100;
@@ -29,7 +31,7 @@ namespace Dagonite
 
         private void Update()
         {
-
+            transform.LookAt(target);
             //distance = new Vector3(Vector3.Distance(player.transform.position, this.transform.position), Vector3.Distance(player.transform.position, this.transform.position), Vector3.Distance(player.transform.position, this.transform.position));
             float dist = Vector3.Distance(player.transform.position, rb.transform.position);
             if(dist <= 20 ) { playerInRange = true; }

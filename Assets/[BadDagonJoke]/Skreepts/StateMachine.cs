@@ -5,14 +5,16 @@ namespace Dagonite
 {
     public class StateMachine
     {
-        public StateMachine(Mroom m)
-        {
-            Mroom = m;
-        }
-
         UnityEvent ChangeStates;
         BaseState currState;
         public Mroom Mroom;
+        
+
+        public StateMachine(Mroom m)
+        {
+            Mroom = m;
+            
+        }
 
         public void ChangeState(BaseState newState)
         {

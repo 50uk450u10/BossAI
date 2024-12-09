@@ -8316,6 +8316,7 @@ MonoBehaviour:
   timesSwitched: 0
   playerInRange: 0
   playerClose: 0
+  inAttackState: 0
   visibility: {fileID: 1474618581}
 --- !u!4 &1884910518 stripped
 Transform:

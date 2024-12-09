@@ -31,7 +31,7 @@ namespace Dagonite
 
         override public void ExitState()
         {
-            if(machine.Mroom.bossHealth.GetCurrentHealth() > 3)
+            if (machine.Mroom.bossHealth.GetCurrentHealth() > 3)
             {
                 machine.Mroom.visibility.enabled = true;
             }

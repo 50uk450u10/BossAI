@@ -15,7 +15,14 @@ namespace Dagonite
 
         override public void EnterState()
         {
-            machine.Mroom.StartCoroutine(machine.Mroom.FireProjectile());
+            if(machine.Mroom.bossHealth.GetCurrentHealth() > 3)
+            {
+                machine.Mroom.StartCoroutine(machine.Mroom.FireProjectile());
+            }
+            else
+            {
+                machine.Mroom.StartCoroutine(machine.Mroom.FireProjectile2());
+            }
         }
 
         override public void UpdateState()

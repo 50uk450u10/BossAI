@@ -25,20 +25,44 @@ namespace Dagonite
         {
             timeSinceTeleported += Time.deltaTime;
             elapsed += Time.deltaTime;
-            if(elapsed > 5)
-            { 
-                if(machine.Mroom.timesSwitched < 5)
+
+            if (elapsed > 5)
+            {
+                if (machine.Mroom.timesSwitched < 5 && machine.Mroom.bossHealth.GetCurrentHealth() > 6)
                 {
                     machine.ChangeState(new ShootState(machine));
                     machine.Mroom.timesSwitched++;
+                    if(machine.Mroom.timesSwitched >= 5)
+                    {
+                        machine.Mroom.timesSwitched = 0;
+                    }
                 }
-                else
+                else if (machine.Mroom.timesSwitched < 5 && machine.Mroom.bossHealth.GetCurrentHealth() <= 6 && machine.Mroom.bossHealth.GetCurrentHealth() > 3)
                 {
-                    machine.Mroom.timesSwitched = 0;
                     machine.ChangeState(new MeleeState(machine));
+                    machine.Mroom.timesSwitched++;
+                    if(machine.Mroom.timesSwitched >= 5)
+                    {
+                        machine.Mroom.timesSwitched = 0;
+                    }
+                }
+                else if(machine.Mroom.timesSwitched < 3 && machine.Mroom.bossHealth.GetCurrentHealth() <= 3)
+                {
+                    machine.Mroom.visibility.enabled = false;
+                    machine.ChangeState(new ShootState(machine));
+                    machine.Mroom.timesSwitched++;
+                    if(machine.Mroom.timesSwitched >= 3)
+                    {
+                        machine.ChangeState(new MeleeState(machine));
+                        machine.Mroom.timesSwitched = 0;
+                    }
                 }
             }
-            if(timeSinceTeleported > 1) { timeSinceTeleported = 0; Teleport(); }
+            if(machine.Mroom.bossHealth.GetCurrentHealth() > 3)
+            {
+                if(timeSinceTeleported > 1) { timeSinceTeleported = 0; Teleport(); }
+            }
+            else if (timeSinceTeleported > 0.5) {  timeSinceTeleported = 0; Teleport(); }
         }
 
         override public void ExitState()
